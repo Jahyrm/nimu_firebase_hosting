@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Suscripción exitosa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #16a34a;
+            --secondary: #22c55e;
+            --background: #f3f4f6;
+            --text: #111827;
+            --muted: #6b7280;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: var(--text);
+        }
+
+        .card {
+            background: white;
+            max-width: 520px;
+            width: 100%;
+            padding: 40px 32px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0 0 20px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .subscription-id {
+            background: #f9fafb;
+            border: 1px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 16px;
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #15803d;
+            transform: translateY(-1px);
+        }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="icon">✅</div>
+        <h1>¡Suscripción exitosa!</h1>
+        <p>
+            Tu suscripción se ha realizado correctamente.
+        </p>
+
+        <div id="subscriptionContainer" class="subscription-id" style="display: none;"></div>
+
+        <!-- <a href="/" class="btn">Ir al inicio</a> -->
+
+        <div class="footer">
+            Gracias por confiar en nosotros.
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const subscriptionId = params.get("subscription_id");
+
+            const container = document.getElementById("subscriptionContainer");
+
+            if (subscriptionId) {
+                container.style.display = "block";
+                container.innerHTML = `
+          <strong>ID de suscripción:</strong><br/>
+          ${subscriptionId}
+        `;
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
